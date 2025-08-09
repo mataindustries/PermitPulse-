@@ -10,4 +10,9 @@
     "react-dom": "18.2.0"
   },
   "type": "module"
+"devDependencies": {
+  "typescript": "^5.5.4",
+  "@types/react": "^18.2.66",
+  "@types/node": "^20.12.12"
+}  
 }
