@@ -1,8 +1,7 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { createClient } from "@supabase/supabase-js";
 import { stringify } from "csv-stringify/sync";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: any, res: any) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
   const s = createClient(url, key);
@@ -12,7 +11,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (city) {
     const { data: srcs } = await s.from("sources").select("id").eq("city", city);
-    if (srcs?.length) q = q.in("source_id", srcs.map(x => x.id));
+    if (srcs?.length) q = q.in("source_id", srcs.map((x: any) => x.id));
   }
   if (trade) q = q.contains("payload", { trade });
 
